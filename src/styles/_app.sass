@@ -1,0 +1,27 @@
+*
+    box-sizing: border-box
+    
+html, body
+    margin: 0
+    padding: 0
+    height: 100%
+
+.app
+    background-color: $background-color
+    font-family: $font
+    padding: 0 10%
+    margin: 0
+    box-sizing: border-box
+    height: fit-content
+    display: flex
+    flex-direction: column
+
+    @media (max-width: 1057px)
+        align-items: center
+
+    @media (max-width: 1670px)
+        padding: 0 5%
+
+    @media (max-width: 1250px)
+        padding: 0 2%
+
