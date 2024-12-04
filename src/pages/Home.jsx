@@ -1,5 +1,6 @@
 import items from "../items.js";
 import Card from "../components/Card";
+import Cart from "./Cart.jsx";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
             />
           ))}
         </div>
+        <Cart />
       </div>
     </>
   );
