@@ -1,8 +1,10 @@
 import items from "../items.js";
 import Card from "../components/Card";
 import Cart from "./Cart.jsx";
+import { useCart } from "../contexts/CartContext";
 
 export default function Home() {
+  const { open } = useCart();
   return (
     <>
       <div className="home">
@@ -19,7 +21,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <Cart />
+        {open && <Cart />}
       </div>
     </>
   );

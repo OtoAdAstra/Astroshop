@@ -1,7 +1,33 @@
+@keyframes cartEnter
+    0%
+        transform: translateX(100%)
+        
+    100%
+        transform: translateX(0%)
+
+    
 .cart
     position: fixed
     right: 0
     top: 0
     height: 100%
-    width: 300px
+    width: 380px
     background-color: $cart-color
+    animation: cartEnter 0.2s ease
+    color: white
+    padding: 30px
+
+    @media (max-width: 900px)
+        width: 100%
+        padding: 40px
+
+.close-icon
+    font-size: $heading
+    position: absolute
+    top: 20px
+    right: 20px
+    cursor: pointer
+
+    @media (max-width: 900px)
+        top: 30px
+        right: 30px
