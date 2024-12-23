@@ -1,7 +1,8 @@
 import { CardButton } from "./Buttons";
 
 // eslint-disable-next-line react/prop-types
-export default function Card({ image, name, price }) {
+export default function Card({ image, name, price, id }) {
+  const item = { id, name, price, image };
   return (
     <article className="card">
       <img src={image} alt={name} />
@@ -15,7 +16,7 @@ export default function Card({ image, name, price }) {
             <p>{price.toLocaleString("en-US")}</p>
           </div>
 
-          <CardButton />
+          <CardButton item={item} />
         </div>
       </div>
     </article>
