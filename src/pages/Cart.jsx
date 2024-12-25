@@ -11,17 +11,21 @@ export default function Cart() {
         <ul>
           {cartItems.map((item) => (
             <>
-              <li key={item.id}>
-                {item.name} - ${item.price} x {item.quantity}
-              </li>
-              <img src={item.img} />
+              <div className="cart-card">
+                <li key={item.id}>
+                  <span>{item.name}</span>
+                  <span>${item.price}</span>
+                  <span>{item.quantity}</span>
+                </li>
+                <img src={item.image} />
+              </div>
             </>
           ))}
+          <div className="padding-bottom"></div>
         </ul>
       ) : (
         <p>Your cart is empty.</p>
       )}
-      <h1>123</h1>
     </div>
   );
 }
