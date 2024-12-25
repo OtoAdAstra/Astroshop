@@ -1,8 +1,33 @@
 import { IoCloseOutline } from "react-icons/io5";
+import { IoIosClose } from "react-icons/io";
 import { useCart } from "../contexts/CartContext";
 
 export default function Cart() {
-  const { toggleCart, cartItems } = useCart();
+  const { toggleCart, cartItems, setCartItems } = useCart();
+
+  const handleIncrease = (id) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const handleDecrease = (id) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
+
+  const removeItem = (itemId) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== itemId)
+    );
+  };
 
   return (
     <div className="cart">
@@ -12,19 +37,30 @@ export default function Cart() {
           {cartItems.map((item) => (
             <>
               <div className="cart-card">
-                <li key={item.id}>
-                  <span>{item.name}</span>
-                  <span>${item.price}</span>
-                  <span>{item.quantity}</span>
-                </li>
                 <img src={item.image} />
+                <div key={item.id} className="cart-card-text">
+                  <span className="cart-card-text-name">{item.name}</span>
+                  <span className="cart-card-text-price">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </span>
+                  <span className="cart-card-text-quantity">
+                    <button onClick={() => handleDecrease(item.id)}>-</button>
+                    {item.quantity}
+                    <button onClick={() => handleIncrease(item.id)}>+</button>
+                  </span>
+                </div>
+                <div
+                  className="remove-card"
+                  onClick={() => removeItem(item.id)}>
+                  <IoIosClose />
+                </div>
               </div>
             </>
           ))}
           <div className="padding-bottom"></div>
         </ul>
       ) : (
-        <p>Your cart is empty.</p>
+        <p className="empty-cart">{`Your cart is empty :(`}</p>
       )}
     </div>
   );
