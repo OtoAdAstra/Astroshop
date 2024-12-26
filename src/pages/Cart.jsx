@@ -29,6 +29,11 @@ export default function Cart() {
     );
   };
 
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
   return (
     <div className="cart">
       <IoCloseOutline className="close-icon" onClick={toggleCart} />
@@ -58,6 +63,10 @@ export default function Cart() {
             </>
           ))}
           <div className="padding-bottom"></div>
+          <div className="cart-footer">
+            <div className="cart-footer-price">${totalPrice.toFixed(2)}</div>
+            <div className="cart-footer-checkout">Checkout</div>
+          </div>
         </ul>
       ) : (
         <p className="empty-cart">{`Your cart is empty :(`}</p>

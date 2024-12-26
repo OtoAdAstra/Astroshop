@@ -16,7 +16,6 @@
     animation: cartEnter 0.2s ease
     color: white
     display: flex
-    padding: 30px 0
     overflow-x: hidden
     scrollbar-width: none
 
@@ -24,13 +23,16 @@
         border: 1px solid black
         border-radius: 10px
         padding: 20px
-        margin: 50px 0
         background-color: $background-color
         color: black
         position: relative
         display: flex
         width: 300px
-        
+        margin: 60px 40px
+
+        @media (max-width: 530px)
+            margin: 60px 5vw
+
 
         img
             width: auto
@@ -61,7 +63,6 @@
 
     @media (max-width: 530px)
         width: 100%
-        padding: 40px
 
 .close-icon
     font-size: $heading
@@ -75,7 +76,7 @@
         right: 30px
 
 .padding-bottom
-    height: 1px
+    height: 50px
 
 .remove-card
     cursor: pointer
@@ -91,3 +92,37 @@
     top: 20%
     font-size: $large
     font-weight: $bold
+
+.cart-footer
+    position: fixed
+    bottom: 0
+    width: 100%
+    height: 50px
+    display: flex
+
+    &-price, &-checkout
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: $large
+        font-weight: $bold
+
+        
+
+    &-price
+        background-color: $orange
+        width: 190px
+
+        @media (max-width: 530px)
+            width: 50%
+            
+
+    &-checkout
+        background-color: black
+        width: 190px
+
+        @media (max-width: 530px)
+            width: 50%
+
+
+
